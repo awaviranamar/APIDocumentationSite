@@ -1,0 +1,440 @@
+{
+  "x-generator": "NSwag v13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v11.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AssetWorks M5 API",
+    "description": "AssetWorks API for M5",
+    "version": "25.1"
+  },
+
+  "components": {
+    "schemas": {
+      "QueryResponseOfIAccident": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QueryResponse"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "Items": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/IAccident"
+                }
+              }
+            }
+          }
+        ]
+      },
+
+    "IPartRequest": {
+        "type": "object",
+        "description": "PartRequest",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "required": [
+          "PartDesc",
+          "PartId",
+          "PartRequestLocationId",
+          "RequestedByEmployeeId",
+          "TaskId",
+          "WorkOrderId"
+        ],
+        "properties": {
+          "ApprovalDate": {
+            "type": "string",
+            "description": "PartRequest.ApprovalDate\n\nWhen approved  \nVX_PARTREQUEST.ApprovalDate DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ApprovalNeeded": {
+            "type": "boolean",
+            "description": "PartRequest.ApprovalNeeded\n\nIs approval required?  Set by query handler.  \nVX_PARTREQUEST.ApprovalNeeded bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "ApprovedByUserId": {
+            "type": "string",
+            "description": "PartRequest.ApprovedByUserId\n\nSupervisor (probably) who approved this thing  \nVX_PARTREQUEST.ApprovedByUserId string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "ApprovedByUserName": {
+            "type": "string",
+            "description": "PartRequest.ApprovedByUserName\n\nWho approved this?  \nVX_PARTREQUEST.ApprovedByUserName string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "AssetDesc": {
+            "type": "string",
+            "description": "PartRequest.AssetDesc\n\nDescription of Equipment. (Unit = Year, Make Model / Dept = Dept_Desc / Comp = Bill_Acct)    \nVX_PARTREQUEST.AssetDesc string 100 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "AssetId": {
+            "type": "string",
+            "description": "PartRequest.AssetId\n\nEquipment Number  \nVX_PARTREQUEST.AssetId string 30 \n\nSearchable: True ",
+            "nullable": true
+          },
+          "AssetSerialNumber": {
+            "type": "string",
+            "description": "PartRequest.AssetSerialNumber\n\nAsset's serial number (VIN)  \nVX_PARTREQUEST.AssetSerialNumber string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "AssignedTo": {
+            "type": "string",
+            "description": "PartRequest.AssignedTo\n\nEmployee number or user ID, depending on a modflag  \nVX_PARTREQUEST.AssignedTo string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "AssignedToName": {
+            "type": "string",
+            "description": "PartRequest.AssignedToName\n\nEmployee's or user's name  \nVX_PARTREQUEST.AssignedToName string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "Attachments": {
+            "description": "PartRequest.Attachments\n\nSearchable: False ",
+            "nullable": true,
+            "$ref": "#/components/schemas/ILookupItemOfIAttachment"
+          },
+          "CanApprove": {
+            "type": "boolean",
+            "description": "PartRequest.CanApprove\n\nView returns false, query handler may turn to true.  \nVX_PARTREQUEST.CanApprove bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "CanMakeReady": {
+            "type": "boolean",
+            "description": "PartRequest.CanMakeReady\n\nCan the request be made ready?  View returns 0; query handler sets it correctly  \nVX_PARTREQUEST.CanMakeReady bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "Comments": {
+            "type": "string",
+            "description": "PartRequest.Comments\n\nPart description for PartId-less requests  \nVX_PARTREQUEST.Comments string 30 \n\nSearchable: True ",
+            "nullable": true
+          },
+          "CoreCost": {
+            "type": "number",
+            "description": "PartRequest.CoreCost\n\nCore charge  \nVX_PARTREQUEST.CoreCost decimal  \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "DateExpected": {
+            "type": "string",
+            "description": "PartRequest.DateExpected\n\nNeeded by date  \nVX_PARTREQUEST.DateExpected DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "DateOrdered": {
+            "type": "string",
+            "description": "PartRequest.DateOrdered\n\nVX_PARTREQUEST.DateOrdered DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "DateRequested": {
+            "type": "string",
+            "description": "PartRequest.DateRequested\n\nVX_PARTREQUEST.DateRequested DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "DateRequired": {
+            "type": "string",
+            "description": "PartRequest.DateRequired\n\nDate the part is required by.  \nVX_PARTREQUEST.DateRequired DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "FailureDesc": {
+            "type": "string",
+            "description": "PartRequest.FailureDesc\n\nFailure code description  \nVX_PARTREQUEST.FailureDesc string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "FailureId": {
+            "type": "string",
+            "description": "PartRequest.FailureId\n\nFailure code  \nVX_PARTREQUEST.FailureId string 10 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "InternalId": {
+            "type": "integer",
+            "description": "PartRequest.InternalId\n\nInternal request (not part_id) sequence  \nVX_PARTREQUEST.InternalId long 10 \n\nSearchable: False ",
+            "format": "int32",
+            "nullable": true
+          },
+          "Issueable": {
+            "type": "boolean",
+            "description": "PartRequest.Issueable\n\nCan the part be issued?  \nVX_PARTREQUEST.Issueable bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "IssueTogether": {
+            "type": "boolean",
+            "description": "PartRequest.IssueTogether\n\nForced false in database  \nVX_PARTREQUEST.IssueTogether bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "LastChangedDateTime": {
+            "type": "string",
+            "description": "PartRequest.LastChangedDateTime\n\nLast changed date and time on main record.  \nVX_PARTREQUEST.LastChangedDateTime DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ManufacturerDesc": {
+            "type": "string",
+            "description": "PartRequest.ManufacturerDesc\n\nPart's manufacturer description  \nVX_PARTREQUEST.ManufacturerDesc string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "ManufacturerId": {
+            "type": "string",
+            "description": "PartRequest.ManufacturerId\n\nPart Manufacturer.  \nVX_PARTREQUEST.ManufacturerId string 20 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "ManufacturerPartNumber": {
+            "type": "string",
+            "description": "PartRequest.ManufacturerPartNumber\n\nMaster Xref Number.  \nVX_PARTREQUEST.ManufacturerPartNumber string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "NewSerialNumbers": {
+            "description": "PartRequest.NewSerialNumbers\n\nSearchable: False ",
+            "nullable": true,
+            "$ref": "#/components/schemas/ILookupItemOfIPartSerialNumber"
+          },
+          "NoteId": {
+            "type": "integer",
+            "description": "PartRequest.NoteId\n\nNote Id, foreign key to notes table  \nVX_PARTREQUEST.NoteId int 10 \n\nSearchable: False ",
+            "format": "int32",
+            "nullable": true
+          },
+          "Notes": {
+            "description": "PartRequest.Notes\n\nPart request note, stored in 4000 chunks, need to be joined together  \nSearchable: False ",
+            "nullable": true,
+            "$ref": "#/components/schemas/ILookupItemOfINote"
+          },
+          "Notify": {
+            "type": "boolean",
+            "description": "PartRequest.Notify\n\nForced false in the database  \nVX_PARTREQUEST.Notify bool  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartCost": {
+            "type": "number",
+            "description": "PartRequest.PartCost\n\nUnit cost of part depending on system flag 1058.  \nVX_PARTREQUEST.PartCost decimal 10 \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "PartDesc": {
+            "type": "string",
+            "description": "PartRequest.PartDesc\n\nPart description if the request has a PartId  \nVX_PARTREQUEST.PartDesc string 30 \n\nSearchable: True \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "PartDescLanguage1": {
+            "type": "string",
+            "description": "PartRequest.PartDescLanguage1\n\nPart description, primary language  \nVX_PARTREQUEST.PartDescLanguage1 string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartDescLanguage2": {
+            "type": "string",
+            "description": "PartRequest.PartDescLanguage2\n\nPart description, second language  \nVX_PARTREQUEST.PartDescLanguage2 string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartDescLanguage3": {
+            "type": "string",
+            "description": "PartRequest.PartDescLanguage3\n\nPart description, third language  \nVX_PARTREQUEST.PartDescLanguage3 string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartId": {
+            "type": "string",
+            "description": "PartRequest.PartId\n\nPart Number  \nVX_PARTREQUEST.PartId string 30 \n\nSearchable: True \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "PartNumber": {
+            "type": "string",
+            "description": "PartRequest.PartNumber\n\nPart Number  \nVX_PARTREQUEST.PartNumber string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartRequestLocationDesc": {
+            "type": "string",
+            "description": "PartRequest.PartRequestLocationDesc\n\nPart Request Location Description  \nVX_PARTREQUEST.PartRequestLocationDesc string 40 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartRequestLocationId": {
+            "type": "string",
+            "description": "PartRequest.PartRequestLocationId\n\nPart Request Location  \nVX_PARTREQUEST.PartRequestLocationId string 6 \n\nSearchable: False \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "PartRequestStatus": {
+            "type": "string",
+            "description": "PartRequest.PartRequestStatus\n\nBase product's status, plus UNAPPROVED:  CLOSED, CANCELLED, ORDERED, REJECTED, IN-REQ, REQAPPROVE, READY, REQUEST, APPROVED  \nVX_PARTREQUEST.PartRequestStatus string 10 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PartRequestStatusDate": {
+            "type": "string",
+            "description": "PartRequest.PartRequestStatusDate\n\nPart Request Status Date  \nVX_PARTREQUEST.PartRequestStatusDate DateTime  \n\nSearchable: False ",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PartSeq": {
+            "type": "integer",
+            "description": "PartRequest.PartSeq\n\nparts.part_id  \nVX_PARTREQUEST.PartSeq int  \n\nSearchable: False ",
+            "format": "int32",
+            "nullable": true
+          },
+          "PreferredVendorDesc": {
+            "type": "string",
+            "description": "PartRequest.PreferredVendorDesc\n\nLocation's primary vendor's name  \nVX_PARTREQUEST.PreferredVendorDesc string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PreferredVendorId": {
+            "type": "string",
+            "description": "PartRequest.PreferredVendorId\n\nLocation's primary vendor for the part  \nVX_PARTREQUEST.PreferredVendorId string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PrimaryBinId": {
+            "type": "string",
+            "description": "PartRequest.PrimaryBinId\n\nPrimary bin at the location  \nVX_PARTREQUEST.PrimaryBinId string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PriorityDesc": {
+            "type": "string",
+            "description": "PartRequest.PriorityDesc\n\nJob priority description  \nVX_PARTREQUEST.PriorityDesc string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PriorityId": {
+            "type": "string",
+            "description": "PartRequest.PriorityId\n\nJob priority  \nVX_PARTREQUEST.PriorityId int  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "PurchaseOrderId": {
+            "type": "string",
+            "description": "PartRequest.PurchaseOrderId\n\nPO No.  \nVX_PARTREQUEST.PurchaseOrderId string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "Qty": {
+            "type": "number",
+            "description": "PartRequest.Qty\n\nPart Request Quantity  \nVX_PARTREQUEST.Qty double 10 \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "QtyAvailable": {
+            "type": "number",
+            "description": "PartRequest.QtyAvailable\n\nQuantity available at the location, 0 for non-stock  \nVX_PARTREQUEST.QtyAvailable int  \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "QtyIssueable": {
+            "type": "integer",
+            "description": "PartRequest.QtyIssueable\n\nQuantity issueable at the location, 0 for non-stock  \nVX_PARTREQUEST.QtyIssueable int  \n\nSearchable: False ",
+            "format": "int32",
+            "nullable": true
+          },
+          "QtyOnHand": {
+            "type": "number",
+            "description": "PartRequest.QtyOnHand\n\nVX_PARTREQUEST.QtyOnHand decimal  \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "QtyOnOrder": {
+            "type": "integer",
+            "description": "PartRequest.QtyOnOrder\n\nQuanity on order for the part at location, not necessarily for this request  \nVX_PARTREQUEST.QtyOnOrder int  \n\nSearchable: False ",
+            "format": "int32",
+            "nullable": true
+          },
+          "RecordType": {
+            "type": "string",
+            "description": "PartRequest.RecordType\n\nType of asset, U, D or C  \nVX_PARTREQUEST.RecordType string 1 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "RequestedByEmployeeId": {
+            "type": "string",
+            "description": "PartRequest.RequestedByEmployeeId\n\nEmployee who requested the part.  \nVX_PARTREQUEST.RequestedByEmployeeId string 11 \n\nSearchable: False \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "RequestedByEmployeeName": {
+            "type": "string",
+            "description": "PartRequest.RequestedByEmployeeName\n\nName of the employee who requested the part.  \nVX_PARTREQUEST.RequestedByEmployeeName string 30 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "RequestId": {
+            "type": "string",
+            "description": "PartRequest.RequestId\n\nPart Request ID  \nVX_PARTREQUEST.RequestId int  \n\nSearchable: True ",
+            "nullable": true
+          },
+          "Status": {
+            "type": "string",
+            "description": "PartRequest.Status\n\nEDGE's status:  PENDING, ORDER, READY, CLOSED, CANCELED.  View is close, query handler sets correctly.  \nVX_PARTREQUEST.Status string  \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TaskDesc": {
+            "type": "string",
+            "description": "PartRequest.TaskDesc\n\nDB function to build the job description from each piece of the code  \nVX_PARTREQUEST.TaskDesc string 100 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TaskId": {
+            "type": "string",
+            "description": "PartRequest.TaskId\n\nWac-System-System/Assembly code  \nVX_PARTREQUEST.TaskId string 10 \n\nSearchable: False \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "TaskLocationDesc": {
+            "type": "string",
+            "description": "PartRequest.TaskLocationDesc\n\nJob Location description  \nVX_PARTREQUEST.TaskLocationDesc string 40 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TaskLocationId": {
+            "type": "string",
+            "description": "PartRequest.TaskLocationId\n\nJob Location.  \nVX_PARTREQUEST.TaskLocationId string 6 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TaskSeq": {
+            "type": "number",
+            "description": "PartRequest.TaskSeq\n\nSequence for how the jobs were added to the work order.  \nVX_PARTREQUEST.TaskSeq double 10 \n\nSearchable: False ",
+            "format": "double",
+            "nullable": true
+          },
+          "TaskStatusDesc": {
+            "type": "string",
+            "description": "PartRequest.TaskStatusDesc\n\nJob Status code Description  \nVX_PARTREQUEST.TaskStatusDesc string 20 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TaskStatusId": {
+            "type": "string",
+            "description": "PartRequest.TaskStatusId\n\nJob Status code  \nVX_PARTREQUEST.TaskStatusId string 3 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "TotalCost": {
+            "type": "number",
+            "description": "PartRequest.TotalCost\n\nTotal value of the request  \nVX_PARTREQUEST.TotalCost decimal  \n\nSearchable: False ",
+            "format": "decimal",
+            "nullable": true
+          },
+          "VendorDesc": {
+            "type": "string",
+            "description": "PartRequest.VendorDesc\n\nVendor name  \nVX_PARTREQUEST.VendorDesc string  \n\nValue can be updated via: PUT  \nSearchable: False ",
+            "nullable": true
+          },
+          "VendorId": {
+            "type": "string",
+            "description": "PartRequest.VendorId\n\nvendor_no supplying the part  \nVX_PARTREQUEST.VendorId string 12 \n\nValue can be updated via: PUT  \nSearchable: False ",
+            "nullable": true
+          },
+          "WorkOrderId": {
+            "type": "string",
+            "description": "PartRequest.WorkOrderId\n\nWork Order Number   \nVX_PARTREQUEST.WorkOrderId string 10 \n\nSearchable: True \nRequired for: PUT  ",
+            "nullable": true
+          },
+          "WorkOrderLocationDesc": {
+            "type": "string",
+            "description": "PartRequest.WorkOrderLocationDesc\n\nWork Order Location description  \nVX_PARTREQUEST.WorkOrderLocationDesc string 40 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "WorkOrderLocationId": {
+            "type": "string",
+            "description": "PartRequest.WorkOrderLocationId\n\nWork Order Maintenance Location  \nVX_PARTREQUEST.WorkOrderLocationId string 6 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "WorkOrderStatusDesc": {
+            "type": "string",
+            "description": "PartRequest.WorkOrderStatusDesc\n\nWork Order Status (open, complete, closed, canceled)  \nVX_PARTREQUEST.WorkOrderStatusDesc string 8 \n\nSearchable: False ",
+            "nullable": true
+          },
+          "WorkOrderTitle": {
+            "type": "string",
+            "description": "PartRequest.WorkOrderTitle\n\nVX_PARTREQUEST.WorkOrderTitle string  \n\nSearchable: False ",
+            "nullable": true
+          }
+        }
+      } 
+    }
+  }
+}

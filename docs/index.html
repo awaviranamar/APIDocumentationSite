@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AssetWorks M5 API Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .header p { font-size: 1.2rem; opacity: 0.9; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .nav-card { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .nav-card:hover { transform: translateY(-5px); }
+        .nav-card h3 { color: #667eea; margin-bottom: 15px; font-size: 1.3rem; }
+        .nav-card p { color: #666; margin-bottom: 15px; }
+        .nav-card a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .nav-card a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .doc-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .doc-item { border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; }
+        .doc-item h4 { color: #667eea; margin-bottom: 10px; }
+        .doc-item .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
+        .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .path-item { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; border-radius: 0 8px 8px 0; }
+        .path-item h4 { color: #667eea; margin-bottom: 10px; }
+        .path-item ol { margin-left: 20px; }
+        .path-item li { margin-bottom: 5px; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .feature { background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center; }
+        .feature-icon { font-size: 2rem; margin-bottom: 10px; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .container { padding: 15px; }
+            .nav-grid, .doc-list, .path-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>📚 AssetWorks M5 API Documentation</h1>
+            <p>Complete guide to understanding, using, and extending the interactive API documentation system</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-grid">
+            <div class="nav-card">
+                <h3>🚀 Getting Started</h3>
+                <p>New to the project? Start here for a complete introduction and quick setup guide.</p>
+                <a href="overview.html">Project Overview →</a><br>
+                <a href="examples.html">Usage Examples →</a>
+            </div>
+            <div class="nav-card">
+                <h3>🔧 Technical Docs</h3>
+                <p>Deep dive into architecture, implementation details, and development guides.</p>
+                <a href="files.html">File Documentation →</a><br>
+                <a href="technical.html">Technical Guide →</a><br>
+                <a href="stoplight.html">Stoplight Elements →</a>
+            </div>
+            <div class="nav-card">
+                <h3>🌐 API Reference</h3>
+                <p>Comprehensive guide to the AssetWorks M5 API functionality and capabilities.</p>
+                <a href="api.html">API Overview →</a>
+            </div>
+            <div class="nav-card">
+                <h3>🛠️ Support</h3>
+                <p>Solutions for common issues, debugging techniques, and troubleshooting help.</p>
+                <a href="troubleshooting.html">Troubleshooting →</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Documentation Overview</h2>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="badge">Essential</div>
+                    <h4><a href="overview.html">Project Overview</a></h4>
+                    <p>Complete introduction to the project, its purpose, and key features. Perfect for first-time users.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">Developer</div>
+                    <h4><a href="files.html">File Documentation</a></h4>
+                    <p>Detailed explanation of every file in the project and what it does. Essential for developers.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">API</div>
+                    <h4><a href="api.html">API Overview</a></h4>
+                    <p>Comprehensive guide to the AssetWorks M5 API functionality and integration possibilities.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">Technical</div>
+                    <h4><a href="technical.html">Technical Guide</a></h4>
+                    <p>Architecture details, setup instructions, and deployment considerations for technical teams.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">Practical</div>
+                    <h4><a href="examples.html">Usage Examples</a></h4>
+                    <p>Practical code examples, integration scenarios, and real-world usage patterns.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">Support</div>
+                    <h4><a href="troubleshooting.html">Troubleshooting</a></h4>
+                    <p>Common issues, error messages, debugging techniques, and solutions.</p>
+                </div>
+                <div class="doc-item">
+                    <div class="badge">Framework</div>
+                    <h4><a href="stoplight.html">Stoplight Elements</a></h4>
+                    <p>Complete guide to the Stoplight Elements framework powering this documentation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 Learning Paths</h2>
+            <div class="path-grid">
+                <div class="path-item">
+                    <h4>Beginner Path</h4>
+                    <ol>
+                        <li><a href="overview.html">Project Overview</a></li>
+                        <li><a href="examples.html">Usage Examples</a></li>
+                        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                    </ol>
+                </div>
+                <div class="path-item">
+                    <h4>Developer Path</h4>
+                    <ol>
+                        <li><a href="api.html">API Overview</a></li>
+                        <li><a href="technical.html">Technical Guide</a></li>
+                        <li><a href="files.html">File Documentation</a></li>
+                    </ol>
+                </div>
+                <div class="path-item">
+                    <h4>Advanced Path</h4>
+                    <ol>
+                        <li><a href="technical.html">Technical Guide</a></li>
+                        <li><a href="files.html">File Documentation</a></li>
+                        <li><a href="examples.html">Advanced Examples</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✨ Key Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📖</div>
+                    <h4>Interactive Docs</h4>
+                    <p>Browse and test API endpoints</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Real-time Processing</h4>
+                    <p>Clean and format specifications</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Modern Interface</h4>
+                    <p>Responsive professional design</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h4>Development Server</h4>
+                    <p>Local hosting for testing</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <h4>Full API Coverage</h4>
+                    <p>Complete AssetWorks M5 functionality</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <h4>Integration Examples</h4>
+                    <p>Practical implementation patterns</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

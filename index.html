@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Elements in HTML</title>
+    <script src="js/web-components.min.js"></script>
+	<script src="utils/textutils.js"></script>
+    <link rel="stylesheet" href="css/styles.min.css">
+  </head>
+</head>
+<body>
+  <body>
+	<elements-api id="docs" hideSchemas="true" router="hash" layout="sidebar" logo="https://media.glassdoor.com/sqls/385539/assetworks-squarelogo-1424782313334.png" ></elements-api>
+	<script>
+	  (async () => {
+		const docs = document.getElementById('docs');
+		const text = await fetch('1.json').then(res => res.text())
+		docs.apiDescriptionDocument = formatter(text);
+	  })();
+
+
+
+	</script>
+  </body>
+</html>

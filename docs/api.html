@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Overview - AssetWorks M5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .api-area { border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; background: #f8f9ff; border-radius: 0 8px 8px 0; }
+        .api-area h3 { color: #667eea; margin-bottom: 15px; }
+        .endpoint-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin: 15px 0; }
+        .endpoint-item { background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 3px solid #28a745; }
+        .endpoint-item code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-size: 0.9rem; }
+        .capability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+        .capability-card { background: #f8f9fa; padding: 20px; border-radius: 8px; }
+        .capability-card h4 { color: #667eea; margin-bottom: 10px; }
+        .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .feature-item { background: #e8f4fd; padding: 15px; border-radius: 6px; text-align: center; }
+        .use-case { background: #f0f7ff; border: 1px solid #b3d9ff; padding: 20px; border-radius: 8px; margin: 15px 0; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 10px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .endpoint-grid, .capability-grid, .feature-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🌐 AssetWorks M5 API Overview</h1>
+            <p>Comprehensive guide to the fleet and asset management API</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="technical.html">Technical Guide</a>
+            <a href="examples.html">Usage Examples</a>
+        </div>
+
+        <div class="section">
+            <h2>📋 Introduction</h2>
+            <p>The AssetWorks M5 API is a comprehensive RESTful web service that provides programmatic access to a complete fleet and asset management system. This API enables organizations to integrate their existing systems with AssetWorks M5 functionality, automate workflows, and build custom applications.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>🔄 RESTful Design</h4>
+                    <p>Standard HTTP methods and JSON format</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📖 OpenAPI 3.0</h4>
+                    <p>Complete specification and documentation</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔍 Interactive Testing</h4>
+                    <p>Built-in testing capabilities</p>
+                </div>
+                <div class="feature-item">
+                    <h4>✅ Schema Validation</h4>
+                    <p>Comprehensive data validation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏗️ Core Functional Areas</h2>
+
+            <div class="api-area">
+                <h3>🚗 1. Asset Management</h3>
+                <p><strong>Purpose:</strong> Complete lifecycle management of organizational assets</p>
+                
+                <div class="endpoint-grid">
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/assets</code><br>
+                        Asset CRUD operations
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/assetAttributes</code><br>
+                        Asset attribute management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/assetCategories</code><br>
+                        Asset categorization
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/assetTypes</code><br>
+                        Asset type definitions
+                    </div>
+                </div>
+
+                <div class="capability-grid">
+                    <div class="capability-card">
+                        <h4>Asset Tracking</h4>
+                        <p>Track vehicles, equipment, and other physical assets with complete lifecycle management.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Specifications</h4>
+                        <p>Manage asset specifications, attributes, and metadata for detailed tracking.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Location Management</h4>
+                        <p>Handle asset transfers, assignments, and real-time location tracking.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Status Monitoring</h4>
+                        <p>Monitor asset status and lifecycle stages with automated updates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-area">
+                <h3>🔧 2. Maintenance Operations</h3>
+                <p><strong>Purpose:</strong> Comprehensive maintenance management and scheduling</p>
+                
+                <div class="endpoint-grid">
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/workOrders</code><br>
+                        Work order management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/tasks</code><br>
+                        Task and job management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/pmServices</code><br>
+                        Preventive maintenance
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/inspections</code><br>
+                        Asset inspections
+                    </div>
+                </div>
+
+                <div class="capability-grid">
+                    <div class="capability-card">
+                        <h4>Work Orders</h4>
+                        <p>Create and manage work orders with complete workflow tracking.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Preventive Maintenance</h4>
+                        <p>Schedule and track preventive maintenance based on time or usage.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Service History</h4>
+                        <p>Maintain complete service history and repair records.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Cost Monitoring</h4>
+                        <p>Monitor maintenance costs and performance metrics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-area">
+                <h3>📦 3. Parts & Inventory Management</h3>
+                <p><strong>Purpose:</strong> Complete parts inventory and procurement system</p>
+                
+                <div class="endpoint-grid">
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/parts</code><br>
+                        Parts catalog management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/inventory</code><br>
+                        Inventory tracking
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/partRequests</code><br>
+                        Parts requisition system
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/purchaseOrders</code><br>
+                        Purchase order management
+                    </div>
+                </div>
+
+                <div class="capability-grid">
+                    <div class="capability-card">
+                        <h4>Parts Catalog</h4>
+                        <p>Maintain comprehensive parts catalog with specifications and pricing.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Inventory Control</h4>
+                        <p>Track inventory levels, locations, and automated reordering.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Procurement</h4>
+                        <p>Automate parts ordering and procurement processes.</p>
+                    </div>
+                    <div class="capability-card">
+                        <h4>Vendor Management</h4>
+                        <p>Manage vendor relationships, pricing, and performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-area">
+                <h3>👥 4. Human Resources</h3>
+                <p><strong>Purpose:</strong> Employee and workforce management</p>
+                
+                <div class="endpoint-grid">
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/employees</code><br>
+                        Employee management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/skills</code><br>
+                        Skill tracking
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/assignments</code><br>
+                        Work assignments
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/timeTracking</code><br>
+                        Labor time tracking
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-area">
+                <h3>💰 5. Financial Management</h3>
+                <p><strong>Purpose:</strong> Cost tracking and financial reporting</p>
+                
+                <div class="endpoint-grid">
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/costCenters</code><br>
+                        Cost center management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/accounts</code><br>
+                        Account management
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/billing</code><br>
+                        Billing and invoicing
+                    </div>
+                    <div class="endpoint-item">
+                        <code>GET /api/v1/reports</code><br>
+                        Financial reporting
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✨ API Features</h2>
+            
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <h4>🔍 Search & Filtering</h4>
+                    <ul>
+                        <li>Generic fuzzy search</li>
+                        <li>Exact matching</li>
+                        <li>OData queries</li>
+                        <li>Pagination support</li>
+                    </ul>
+                </div>
+                <div class="capability-card">
+                    <h4>✅ Data Validation</h4>
+                    <ul>
+                        <li>Schema enforcement</li>
+                        <li>Required field validation</li>
+                        <li>Business rule checking</li>
+                        <li>Comprehensive error handling</li>
+                    </ul>
+                </div>
+                <div class="capability-card">
+                    <h4>🔒 Security</h4>
+                    <ul>
+                        <li>API key authentication</li>
+                        <li>Role-based access control</li>
+                        <li>Data encryption</li>
+                        <li>Complete audit trails</li>
+                    </ul>
+                </div>
+                <div class="capability-card">
+                    <h4>🔗 Integration</h4>
+                    <ul>
+                        <li>Webhook support</li>
+                        <li>Bulk operations</li>
+                        <li>Import/export capabilities</li>
+                        <li>Third-party integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Common Use Cases</h2>
+
+            <div class="use-case">
+                <h3><span class="badge">Fleet</span>Fleet Management Integration</h3>
+                <div class="code-block">
+Scenario: Integrate GPS tracking with asset locations
+Endpoints: /api/v1/assets, /api/v1/assetpositions
+Benefits: Real-time asset tracking and location updates
+                </div>
+            </div>
+
+            <div class="use-case">
+                <h3><span class="badge">Maintenance</span>Automated Maintenance Scheduling</h3>
+                <div class="code-block">
+Scenario: Automatically schedule maintenance based on usage
+Endpoints: /api/v1/assets/{id}/pmservicesdue, /api/v1/workOrders
+Benefits: Proactive maintenance and reduced downtime
+                </div>
+            </div>
+
+            <div class="use-case">
+                <h3><span class="badge">Inventory</span>Parts Inventory Automation</h3>
+                <div class="code-block">
+Scenario: Automatic parts ordering when inventory is low
+Endpoints: /api/v1/inventory, /api/v1/partRequests, /api/v1/purchaseOrders
+Benefits: Optimized inventory levels and reduced stockouts
+                </div>
+            </div>
+
+            <div class="use-case">
+                <h3><span class="badge">Financial</span>Financial Reporting Integration</h3>
+                <div class="code-block">
+Scenario: Export cost data to external accounting systems
+Endpoints: /api/v1/costCenters, /api/v1/accounts, /api/v1/reports
+Benefits: Streamlined financial processes and reporting
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Getting Started</h2>
+            
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <h4>Prerequisites</h4>
+                    <ul>
+                        <li>Valid AssetWorks M5 system access</li>
+                        <li>API credentials and authentication</li>
+                        <li>Basic understanding of REST APIs</li>
+                        <li>JSON data format knowledge</li>
+                    </ul>
+                </div>
+                <div class="capability-card">
+                    <h4>First Steps</h4>
+                    <ol>
+                        <li>Explore the interactive documentation</li>
+                        <li>Test simple GET requests</li>
+                        <li>Configure authentication</li>
+                        <li>Plan your integration approach</li>
+                        <li>Build and test your integration</li>
+                    </ol>
+                </div>
+                <div class="capability-card">
+                    <h4>Best Practices</h4>
+                    <ul>
+                        <li>Respect API rate limits</li>
+                        <li>Implement robust error handling</li>
+                        <li>Validate data before requests</li>
+                        <li>Secure API credentials</li>
+                        <li>Monitor API usage</li>
+                    </ul>
+                </div>
+                <div class="capability-card">
+                    <h4>Version Info</h4>
+                    <ul>
+                        <li><span class="highlight">Current Version:</span> 25.1</li>
+                        <li>Backward compatibility maintained</li>
+                        <li>Regular updates and improvements</li>
+                        <li>Community-driven enhancements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

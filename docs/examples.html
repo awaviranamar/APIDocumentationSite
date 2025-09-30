@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage Examples - AssetWorks M5 API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .section h3 { color: #667eea; margin: 25px 0 15px 0; }
+        .example-card { background: #f8f9ff; border-left: 4px solid #667eea; padding: 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .example-card h4 { color: #667eea; margin-bottom: 15px; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.9rem; }
+        .scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 20px 0; }
+        .scenario-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; }
+        .scenario-card h4 { color: #667eea; margin-bottom: 10px; }
+        .objective-box { background: #e8f4fd; border: 1px solid #b3d9ff; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .step-list { background: #f0f7ff; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .step-list ol { margin-left: 20px; }
+        .step-list li { margin-bottom: 8px; }
+        .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 10px; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        .warning-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .scenario-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>💻 Usage Examples & Integration Guide</h1>
+            <p>Practical examples and real-world integration scenarios</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="technical.html">Technical Guide</a>
+            <a href="api.html">API Overview</a>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Getting Started Examples</h2>
+
+            <div class="example-card">
+                <h4>Basic Setup and First API Call</h4>
+                
+                <h5>1. Starting the Documentation Server</h5>
+                <div class="code-block">
+# Navigate to project directory
+cd "c:\New folder\New folder"
+
+# Start the server
+node index.js
+
+# Expected output:
+# Server running at http://localhost:3000
+                </div>
+
+                <h5>2. Accessing the Documentation</h5>
+                <div class="code-block">
+// Open browser and navigate to:
+http://localhost:3000
+
+// The interface will load with:
+// - AssetWorks M5 API documentation
+// - Interactive endpoint explorer
+// - Search functionality
+// - Organized API categories
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>Exploring API Endpoints</h4>
+                
+                <h5>Asset Management Examples</h5>
+                <div class="code-block">
+// Get all assets
+GET /api/v1/assets
+{
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ODataQueryOptionsOfIAsset"
+        }
+      }
+    }
+  }
+}
+
+// Search for specific asset
+GET /api/v1/assets/search/{search}
+// Example: /api/v1/assets/search/truck
+
+// Get asset by ID
+GET /api/v1/assets/{id}
+// Example: /api/v1/assets/VEH001
+                </div>
+
+                <h5>Work Order Management Examples</h5>
+                <div class="code-block">
+// Create new work order
+POST /api/v1/workOrders
+{
+  "AssetId": "VEH001",
+  "Description": "Routine maintenance",
+  "Priority": "Normal",
+  "RequestedBy": "EMP123"
+}
+
+// Update work order status
+PUT /api/v1/workOrders/{id}
+{
+  "Status": "In Progress",
+  "AssignedTo": "TECH456"
+}
+
+// Get work orders for specific asset
+GET /api/v1/workOrders/search/VEH001
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Integration Scenarios</h2>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <h4><span class="badge">Scenario 1</span>Fleet Tracking Integration</h4>
+                    
+                    <div class="objective-box">
+                        <strong>Objective:</strong> Integrate GPS tracking system with AssetWorks M5 to update vehicle positions in real-time.
+                    </div>
+
+                    <div class="code-block">
+// Update asset position
+async function updateAssetPosition(assetId, latitude, longitude) {
+  const positionData = {
+    AssetId: assetId,
+    Latitude: latitude,
+    Longitude: longitude,
+    EffectiveDateTime: new Date().toISOString()
+  };
+
+  try {
+    const response = await fetch('/api/v1/assetpositions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_TOKEN'
+      },
+      body: JSON.stringify({
+        saveBody: {
+          Items: [positionData]
+        }
+      })
+    });
+
+    if (response.ok) {
+      console.log(`Position updated for asset ${assetId}`);
+    }
+  } catch (error) {
+    console.error('Failed to update position:', error);
+  }
+}
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="badge">Scenario 2</span>Automated Maintenance Scheduling</h4>
+                    
+                    <div class="objective-box">
+                        <strong>Objective:</strong> Automatically create work orders when assets reach maintenance intervals.
+                    </div>
+
+                    <div class="code-block">
+// Check for due maintenance
+async function checkMaintenanceDue(assetId) {
+  const response = await fetch(`/api/v1/assets/${assetId}/pmservicesdue`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    },
+    body: JSON.stringify({
+      options: {
+        filter: "DueDate le datetime'now'"
+      }
+    })
+  });
+
+  return response.json();
+}
+
+// Create maintenance work order
+async function createMaintenanceWorkOrder(assetId, serviceType, dueDate) {
+  const workOrderData = {
+    AssetId: assetId,
+    Description: `Scheduled ${serviceType} maintenance`,
+    Priority: 'Normal',
+    ScheduledDate: dueDate,
+    WorkOrderType: 'Preventive Maintenance',
+    Status: 'Open'
+  };
+
+  const response = await fetch('/api/v1/workOrders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    },
+    body: JSON.stringify({
+      saveBody: {
+        Items: [workOrderData]
+      }
+    })
+  });
+
+  return response.json();
+}
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="badge">Scenario 3</span>Inventory Management Integration</h4>
+                    
+                    <div class="objective-box">
+                        <strong>Objective:</strong> Integrate with procurement system to automate parts ordering when inventory is low.
+                    </div>
+
+                    <div class="code-block">
+// Monitor inventory levels
+async function checkLowInventory(locationId) {
+  const response = await fetch('/api/v1/inventory', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    },
+    body: JSON.stringify({
+      options: {
+        filter: `LocationId eq '${locationId}' and QtyOnHand le ReorderPoint`
+      }
+    })
+  });
+
+  return response.json();
+}
+
+// Create purchase order for low stock items
+async function createPurchaseOrder(vendorId, parts) {
+  const purchaseOrderData = {
+    VendorId: vendorId,
+    OrderDate: new Date().toISOString(),
+    Status: 'Pending',
+    Items: parts.map(part => ({
+      PartId: part.PartId,
+      Quantity: part.ReorderQuantity,
+      UnitCost: part.LastCost
+    }))
+  };
+
+  const response = await fetch('/api/v1/purchaseOrders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    },
+    body: JSON.stringify({
+      saveBody: purchaseOrderData
+    })
+  });
+
+  return response.json();
+}
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="badge">Scenario 4</span>Employee Time Tracking Integration</h4>
+                    
+                    <div class="objective-box">
+                        <strong>Objective:</strong> Integrate time clock system with work order labor tracking.
+                    </div>
+
+                    <div class="code-block">
+// Clock in to work order
+async function clockInToWorkOrder(employeeId, workOrderId, taskId) {
+  const timeEntryData = {
+    EmployeeId: employeeId,
+    WorkOrderId: workOrderId,
+    TaskId: taskId,
+    StartTime: new Date().toISOString(),
+    Status: 'Active'
+  };
+
+  const response = await fetch('/api/v1/timeEntries', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    },
+    body: JSON.stringify({
+      saveBody: timeEntryData
+    })
+  });
+
+  return response.json();
+}
+
+// Time tracking workflow
+class TimeTracker {
+  constructor() {
+    this.activeTimeEntries = new Map();
+  }
+
+  async startWork(employeeId, workOrderId, taskId) {
+    try {
+      const timeEntry = await clockInToWorkOrder(employeeId, workOrderId, taskId);
+      this.activeTimeEntries.set(employeeId, timeEntry.Id);
+      
+      console.log(`Employee ${employeeId} started work on ${workOrderId}`);
+      return timeEntry;
+    } catch (error) {
+      console.error('Failed to start work:', error);
+    }
+  }
+
+  async stopWork(employeeId) {
+    const timeEntryId = this.activeTimeEntries.get(employeeId);
+    
+    if (timeEntryId) {
+      try {
+        const result = await clockOutOfWorkOrder(timeEntryId);
+        this.activeTimeEntries.delete(employeeId);
+        
+        console.log(`Employee ${employeeId} completed work`);
+        return result;
+      } catch (error) {
+        console.error('Failed to stop work:', error);
+      }
+    }
+  }
+}
+
+// Usage
+const timeTracker = new TimeTracker();
+timeTracker.startWork('EMP123', 'WO456', 'TASK789');
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔄 Advanced Integration Patterns</h2>
+
+            <div class="example-card">
+                <h4>1. Real-time Data Synchronization</h4>
+                <div class="code-block">
+// WebSocket-like pattern for real-time updates
+class AssetWorksSync {
+  constructor(apiBaseUrl, apiToken) {
+    this.apiBaseUrl = apiBaseUrl;
+    this.apiToken = apiToken;
+    this.syncInterval = 30000; // 30 seconds
+  }
+
+  async syncAssetData() {
+    const lastSync = localStorage.getItem('lastSyncTime') || new Date(0);
+    
+    const response = await fetch(`${this.apiBaseUrl}/api/v1/assets`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${this.apiToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        options: {
+          filter: `LastChangedDateTime gt datetime'${lastSync}'`
+        }
+      })
+    });
+
+    const updatedAssets = await response.json();
+    
+    // Process updates
+    this.processAssetUpdates(updatedAssets.Items);
+    
+    // Update sync timestamp
+    localStorage.setItem('lastSyncTime', new Date().toISOString());
+  }
+
+  processAssetUpdates(assets) {
+    assets.forEach(asset => {
+      // Update local cache or trigger UI updates
+      this.updateLocalAsset(asset);
+    });
+  }
+
+  startSync() {
+    setInterval(() => this.syncAssetData(), this.syncInterval);
+  }
+}
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>2. Error Handling and Retry Logic</h4>
+                <div class="code-block">
+class ApiClient {
+  constructor(baseUrl, token) {
+    this.baseUrl = baseUrl;
+    this.token = token;
+    this.maxRetries = 3;
+    this.retryDelay = 1000;
+  }
+
+  async makeRequest(endpoint, options = {}, retryCount = 0) {
+    try {
+      const response = await fetch(`${this.baseUrl}${endpoint}`, {
+        ...options,
+        headers: {
+          'Authorization': `Bearer ${this.token}`,
+          'Content-Type': 'application/json',
+          ...options.headers
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      if (retryCount < this.maxRetries) {
+        console.warn(`Request failed, retrying... (${retryCount + 1}/${this.maxRetries})`);
+        await this.delay(this.retryDelay * Math.pow(2, retryCount));
+        return this.makeRequest(endpoint, options, retryCount + 1);
+      }
+      
+      throw error;
+    }
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>3. Batch Processing</h4>
+                <div class="code-block">
+class BatchProcessor {
+  constructor(apiClient, batchSize = 100) {
+    this.apiClient = apiClient;
+    this.batchSize = batchSize;
+  }
+
+  async processBatch(items, endpoint, method = 'POST') {
+    const batches = this.createBatches(items);
+    const results = [];
+
+    for (const batch of batches) {
+      try {
+        const result = await this.apiClient.makeRequest(endpoint, {
+          method: method,
+          body: JSON.stringify({
+            saveBody: {
+              Items: batch
+            }
+          })
+        });
+        
+        results.push(result);
+      } catch (error) {
+        console.error('Batch processing error:', error);
+        results.push({ error: error.message, items: batch });
+      }
+    }
+
+    return results;
+  }
+
+  createBatches(items) {
+    const batches = [];
+    for (let i = 0; i < items.length; i += this.batchSize) {
+      batches.push(items.slice(i, i + this.batchSize));
+    }
+    return batches;
+  }
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Best Practices</h2>
+
+            <div class="step-list">
+                <h4>Development Best Practices:</h4>
+                <ol>
+                    <li><span class="highlight">Start Simple:</span> Begin with basic GET requests to understand data structure</li>
+                    <li><span class="highlight">Error Handling:</span> Implement comprehensive error handling and retry logic</li>
+                    <li><span class="highlight">Rate Limiting:</span> Respect API rate limits and implement backoff strategies</li>
+                    <li><span class="highlight">Data Validation:</span> Validate data before sending requests to avoid errors</li>
+                    <li><span class="highlight">Security:</span> Secure API credentials and use HTTPS in production</li>
+                    <li><span class="highlight">Monitoring:</span> Monitor API usage and performance metrics</li>
+                    <li><span class="highlight">Documentation:</span> Document your integration for future maintenance</li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <strong>Important Notes:</strong>
+                <ul>
+                    <li>Always test integrations in a development environment first</li>
+                    <li>Keep API credentials secure and rotate them regularly</li>
+                    <li>Implement proper logging for debugging and monitoring</li>
+                    <li>Consider implementing circuit breakers for external API calls</li>
+                    <li>Plan for API versioning and backward compatibility</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Documentation - AssetWorks M5 API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .file-card { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #667eea; }
+        .file-card h2 { color: #667eea; margin-bottom: 15px; display: flex; align-items: center; }
+        .file-icon { font-size: 1.5rem; margin-right: 10px; }
+        .file-path { background: #f8f8f8; padding: 8px 12px; border-radius: 4px; font-family: monospace; margin: 10px 0; display: inline-block; }
+        .purpose-box { background: #f0f7ff; border: 1px solid #b3d9ff; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .features-list { background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; }
+        .dependency-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 15px 0; }
+        .dependency-item { background: #e8f4fd; padding: 10px; border-radius: 4px; text-align: center; }
+        .relationship-diagram { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; font-family: monospace; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .dependency-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>📄 File Documentation</h1>
+            <p>Detailed explanation of every file in the project</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="technical.html">Technical Guide</a>
+            <a href="examples.html">Usage Examples</a>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">🌐</span>index.html</h2>
+            <div class="file-path">./index.html</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Main application entry point and user interface
+            </div>
+
+            <h3>What it does:</h3>
+            <ul>
+                <li>Serves as the primary web page for the API documentation viewer</li>
+                <li>Loads the Elements API component library for interactive documentation</li>
+                <li>Integrates custom styling and JavaScript utilities</li>
+                <li>Displays the AssetWorks logo and branding</li>
+                <li>Configures the documentation layout with sidebar navigation</li>
+                <li>Fetches and processes the API specification data</li>
+            </ul>
+
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Responsive design that works on desktop and mobile</li>
+                    <li>Interactive API explorer with search capabilities</li>
+                    <li>Schema hiding option for cleaner interface</li>
+                    <li>Hash-based routing for deep linking to specific sections</li>
+                </ul>
+            </div>
+
+            <div class="dependency-list">
+                <div class="dependency-item">js/web-components.min.js</div>
+                <div class="dependency-item">utils/textutils.js</div>
+                <div class="dependency-item">css/styles.min.css</div>
+                <div class="dependency-item">1.json</div>
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">⚙️</span>index.js</h2>
+            <div class="file-path">./index.js</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Local development server for serving the documentation site
+            </div>
+
+            <h3>What it does:</h3>
+            <ul>
+                <li>Creates a simple HTTP server using Node.js</li>
+                <li>Serves static files (HTML, CSS, JavaScript, JSON)</li>
+                <li>Handles different content types (HTML, JSON, CSS)</li>
+                <li>Provides local development environment on port 3000</li>
+                <li>Enables CORS for API testing and development</li>
+            </ul>
+
+            <div class="code-block">
+# Usage
+node index.js
+# Server starts on http://localhost:3000
+            </div>
+
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Automatic content-type detection based on file extensions</li>
+                    <li>Error handling for missing files (404 responses)</li>
+                    <li>Console logging for server status</li>
+                    <li>Lightweight and fast for development purposes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">📊</span>1.json</h2>
+            <div class="file-path">./1.json</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Primary OpenAPI 3.0 specification containing all API endpoints
+            </div>
+
+            <h3>What it contains:</h3>
+            <ul>
+                <li>Complete API endpoint definitions (paths, methods, parameters)</li>
+                <li>Request and response schemas</li>
+                <li>Authentication requirements</li>
+                <li>API metadata (title, version, description)</li>
+                <li>Over 200+ endpoints covering the full AssetWorks M5 functionality</li>
+            </ul>
+
+            <div class="features-list">
+                <h4>Key Sections:</h4>
+                <ul>
+                    <li><span class="highlight">Paths:</span> All available API endpoints organized by resource type</li>
+                    <li><span class="highlight">Components:</span> Reusable schemas and data structures</li>
+                    <li><span class="highlight">Info:</span> API metadata and versioning information</li>
+                    <li><span class="highlight">Tags:</span> Endpoint categorization for better organization</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+Example Endpoint Categories:
+• Assets, Accidents, Accounts
+• Work Orders, Tasks, Employees  
+• Parts, Inventory, Purchase Orders
+• Locations, Vendors, Maintenance
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">📋</span>2.json</h2>
+            <div class="file-path">./2.json</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Extended schemas and component definitions
+            </div>
+
+            <h3>What it contains:</h3>
+            <ul>
+                <li>Detailed data structure definitions</li>
+                <li>Complex object schemas with validation rules</li>
+                <li>Relationship mappings between different entities</li>
+                <li>Additional metadata for API components</li>
+            </ul>
+
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Comprehensive field descriptions</li>
+                    <li>Data type specifications (string, integer, boolean, etc.)</li>
+                    <li>Required field indicators</li>
+                    <li>Searchable field flags</li>
+                    <li>Nullable field specifications</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">🔧</span>utils/textutils.js</h2>
+            <div class="file-path">./utils/textutils.js</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Custom JavaScript utilities for processing and cleaning API specification data
+            </div>
+
+            <h3>Key Functions:</h3>
+            
+            <div class="code-block">
+formatter(str)
+├── Main processing function
+└── Cleans and updates JSON strings
+
+removeDeprecatedFromJsonString(jsonStr)  
+├── Removes deprecated API endpoints
+└── Ensures only current features are displayed
+
+updateNullableInJsonString(jsonStr)
+├── Updates nullable field specifications  
+└── Handles allOf schema merging
+            </div>
+
+            <div class="features-list">
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Cleaner API documentation without deprecated features</li>
+                    <li>Accurate field validation information</li>
+                    <li>Consistent data structure representation</li>
+                    <li>Better developer experience with current API features only</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">🎨</span>css/styles.min.css</h2>
+            <div class="file-path">./css/styles.min.css</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Minified stylesheet for the documentation interface
+            </div>
+
+            <div class="features-list">
+                <h4>What it provides:</h4>
+                <ul>
+                    <li>Modern, clean visual design</li>
+                    <li>Responsive layout for different screen sizes</li>
+                    <li>Interactive element styling (buttons, forms, navigation)</li>
+                    <li>Color scheme and typography</li>
+                    <li>Component-specific styling for the Elements API library</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">⚡</span>js/web-components.min.js</h2>
+            <div class="file-path">./js/web-components.min.js</div>
+            
+            <div class="purpose-box">
+                <strong>Purpose:</strong> Stoplight Elements API component library for interactive documentation
+            </div>
+
+            <h3>What is Stoplight Elements?</h3>
+            <p><strong>Stoplight Elements</strong> is a collection of rich, embeddable web components powered by OpenAPI specifications. It's developed by Stoplight, a leading API design and documentation platform.</p>
+
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li><strong>&lt;elements-api&gt;</strong>: Main documentation component that renders complete API docs</li>
+                    <li><strong>Interactive Examples:</strong> Try-it-out functionality with real API calls</li>
+                    <li><strong>Schema Browser:</strong> Visual representation of data models and validation</li>
+                    <li><strong>Code Generation:</strong> Automatic code samples in multiple languages</li>
+                    <li><strong>Responsive Design:</strong> Mobile-friendly and customizable themes</li>
+                    <li><strong>Search & Navigation:</strong> Built-in search and organized endpoint navigation</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+// Configuration options for Elements API
+&lt;elements-api 
+  id="docs" 
+  hideSchemas="true"     // Simplify interface
+  router="hash"          // Enable deep linking
+  layout="sidebar"       // Navigation layout
+  logo="[logo-url]"      // Custom branding
+&gt;
+&lt;/elements-api&gt;
+            </div>
+
+            <h4>Why Stoplight Elements?</h4>
+            <ul>
+                <li><span class="highlight">Industry Standard:</span> Used by thousands of companies worldwide</li>
+                <li><span class="highlight">OpenAPI Native:</span> Built specifically for OpenAPI 3.0 specifications</li>
+                <li><span class="highlight">Zero Configuration:</span> Works out-of-the-box with any valid OpenAPI spec</li>
+                <li><span class="highlight">Extensible:</span> Highly customizable with CSS and JavaScript</li>
+                <li><span class="highlight">Performance:</span> Optimized for large API specifications</li>
+            </ul>
+        </div>
+
+        <div class="file-card">
+            <h2><span class="file-icon">🔗</span>File Relationships</h2>
+            
+            <div class="relationship-diagram">
+index.html (main entry)<br>
+    ├── Loads: js/web-components.min.js<br>
+    ├── Loads: css/styles.min.css<br>
+    ├── Loads: utils/textutils.js<br>
+    └── Fetches: 1.json (processed by textutils)<br>
+<br>
+index.js (server)<br>
+    └── Serves all static files<br>
+<br>
+1.json + 2.json (data)<br>
+    └── Processed by: utils/textutils.js<br>
+    └── Consumed by: Elements API components
+            </div>
+
+            <p>Each file plays a crucial role in creating a comprehensive, user-friendly API documentation experience for the AssetWorks M5 system.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoplight Elements Framework - AssetWorks M5 API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .section h3 { color: #667eea; margin: 25px 0 15px 0; }
+        .hero-box { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 30px; border-radius: 10px; margin: 20px 0; text-align: center; }
+        .hero-box h3 { color: white; margin-bottom: 15px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .feature-card { background: #f8f9ff; border-left: 4px solid #667eea; padding: 20px; border-radius: 0 8px 8px 0; }
+        .feature-card h4 { color: #667eea; margin-bottom: 10px; }
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0; }
+        .comparison-item { background: #f8f9fa; padding: 15px; border-radius: 6px; text-align: center; }
+        .comparison-item.winner { background: #d4edda; border: 2px solid #28a745; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.9rem; }
+        .highlight-box { background: #f0f7ff; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .info-box { background: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .warning-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 10px; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        .btn { display: inline-block; background: #667eea; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 10px 10px 10px 0; }
+        .btn:hover { background: #5a6fd8; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .feature-grid, .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>⚡ Stoplight Elements Framework</h1>
+            <p>The powerful web component library behind this documentation</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="technical.html">Technical Guide</a>
+            <a href="files.html">File Documentation</a>
+        </div>
+
+        <div class="hero-box">
+            <h3>🚀 Stoplight Elements Powers This Documentation</h3>
+            <p>This entire AssetWorks M5 API documentation site is built using <strong>Stoplight Elements</strong> - a cutting-edge web component library that transforms OpenAPI specifications into beautiful, interactive documentation experiences.</p>
+        </div>
+
+        <div class="section">
+            <h2>🌟 What is Stoplight Elements?</h2>
+            
+            <p><strong>Stoplight Elements</strong> is a collection of rich, embeddable web components powered by OpenAPI specifications. Created by Stoplight, a leading API design and documentation platform, Elements provides everything you need to create world-class API documentation.</p>
+
+            <div class="highlight-box">
+                <h3>Key Philosophy</h3>
+                <p>Elements follows the principle of <strong>"OpenAPI-first documentation"</strong> - meaning your API specification is the single source of truth, and beautiful documentation is automatically generated from it.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🎨 Beautiful by Default</h4>
+                    <p>Stunning, professional-looking documentation with zero configuration required. Just point it at your OpenAPI spec and you're done.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔧 Highly Customizable</h4>
+                    <p>Extensive theming options, custom CSS support, and configuration properties to match your brand perfectly.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📱 Mobile-First</h4>
+                    <p>Responsive design that works flawlessly on desktop, tablet, and mobile devices with touch-friendly interactions.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ Performance Optimized</h4>
+                    <p>Built for large API specifications with thousands of endpoints. Lazy loading and efficient rendering ensure fast performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏗️ How Elements Works in This Project</h2>
+
+            <h3>Simple Integration</h3>
+            <div class="code-block">
+&lt;!-- 1. Include the Elements library --&gt;
+&lt;script src="js/web-components.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- 2. Add the Elements component --&gt;
+&lt;elements-api 
+  id="docs" 
+  hideSchemas="true" 
+  router="hash" 
+  layout="sidebar"&gt;
+&lt;/elements-api&gt;
+
+&lt;!-- 3. Load your OpenAPI specification --&gt;
+&lt;script&gt;
+(async () => {
+  const docs = document.getElementById('docs');
+  const spec = await fetch('1.json').then(res => res.text());
+  docs.apiDescriptionDocument = formatter(spec);
+})();
+&lt;/script&gt;
+            </div>
+
+            <h3>Data Flow Architecture</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📄 1. OpenAPI Specification</h4>
+                    <p>Raw OpenAPI 3.0 specification file (1.json) containing all API endpoint definitions and schemas.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔄 2. Processing Layer</h4>
+                    <p>Custom utilities clean and optimize the specification (remove deprecated endpoints, fix nullable fields).</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ 3. Elements Rendering</h4>
+                    <p>Stoplight Elements consumes the processed specification and renders interactive documentation.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎨 4. User Interface</h4>
+                    <p>Beautiful, interactive documentation with try-it functionality, code examples, and search capabilities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🆚 Why Choose Stoplight Elements?</h2>
+
+            <h3>Comparison with Alternatives</h3>
+            <div class="comparison-grid">
+                <div class="comparison-item winner">
+                    <h4>Stoplight Elements</h4>
+                    <ul>
+                        <li>✅ Zero configuration</li>
+                        <li>✅ Beautiful default theme</li>
+                        <li>✅ Web components standard</li>
+                        <li>✅ Interactive try-it</li>
+                        <li>✅ Mobile responsive</li>
+                        <li>✅ Large spec support</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>Swagger UI</h4>
+                    <ul>
+                        <li>✅ Widely adopted</li>
+                        <li>⚠️ Requires configuration</li>
+                        <li>❌ Dated appearance</li>
+                        <li>✅ Interactive try-it</li>
+                        <li>⚠️ Limited mobile support</li>
+                        <li>⚠️ Performance issues</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>Redoc</h4>
+                    <ul>
+                        <li>✅ Clean design</li>
+                        <li>✅ Good performance</li>
+                        <li>❌ Read-only (no try-it)</li>
+                        <li>⚠️ Limited customization</li>
+                        <li>✅ Mobile responsive</li>
+                        <li>✅ Large spec support</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>Custom Solution</h4>
+                    <ul>
+                        <li>✅ Full control</li>
+                        <li>❌ High development cost</li>
+                        <li>❌ Maintenance burden</li>
+                        <li>⚠️ Feature completeness</li>
+                        <li>⚠️ Browser compatibility</li>
+                        <li>❌ Time to market</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Key Features in Action</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔍 Smart Search</h4>
+                    <p>Instantly find endpoints, parameters, or schemas with intelligent search that understands API terminology and context.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Code Generation</h4>
+                    <p>Automatic code examples in multiple programming languages (JavaScript, Python, cURL, etc.) for every endpoint.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🧪 Try It Out</h4>
+                    <p>Interactive testing interface where users can make real API calls directly from the documentation.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Schema Visualization</h4>
+                    <p>Clear, hierarchical display of data models with type information, validation rules, and example values.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 Deep Linking</h4>
+                    <p>Every section, endpoint, and schema has a unique URL for easy sharing and bookmarking.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎨 Theming System</h4>
+                    <p>Comprehensive theming options with CSS custom properties for colors, fonts, spacing, and layout.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Configuration Options</h2>
+
+            <h3>Essential Configuration</h3>
+            <div class="code-block">
+&lt;elements-api 
+  id="docs"
+  
+  // Layout & Navigation
+  layout="sidebar"              // sidebar | stacked
+  router="hash"                 // hash | memory | history
+  hideSchemas="true"            // Hide schema section
+  
+  // Branding
+  logo="[logo-url]"             // Custom logo
+  
+  // Behavior
+  tryItCredentialsPolicy="omit" // include | same-origin | omit
+  tryItCorsProxy="[proxy-url]"  // CORS proxy for try-it
+  
+  // Styling
+  basePath="/"                  // Base path for routing
+&gt;
+&lt;/elements-api&gt;
+            </div>
+
+            <h3>Advanced Customization</h3>
+            <div class="code-block">
+/* Custom CSS for theming */
+elements-api {
+  --color-primary: #667eea;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --font-family: 'Inter', sans-serif;
+  --border-radius: 8px;
+}
+
+/* Hide specific sections */
+elements-api::part(docs-section-schemas) {
+  display: none;
+}
+
+/* Custom sidebar styling */
+elements-api::part(docs-sidebar) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Performance Benefits</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>⚡ Lazy Loading</h4>
+                    <p>Components and content load on-demand, ensuring fast initial page load even with massive API specifications.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🗜️ Efficient Rendering</h4>
+                    <p>Virtual scrolling and smart DOM updates handle thousands of endpoints without performance degradation.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📦 Bundle Optimization</h4>
+                    <p>Tree-shaking and code splitting ensure only necessary components are loaded for your specific use case.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔄 Caching Strategy</h4>
+                    <p>Intelligent caching of parsed specifications and rendered components for instant subsequent loads.</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Performance Stats:</strong>
+                <ul>
+                    <li>Handles OpenAPI specs with 1000+ endpoints smoothly</li>
+                    <li>Initial load time under 2 seconds on 3G networks</li>
+                    <li>Memory usage optimized for long browsing sessions</li>
+                    <li>60fps smooth scrolling and interactions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌍 Industry Adoption</h2>
+
+            <p>Stoplight Elements is trusted by thousands of companies worldwide, from startups to Fortune 500 enterprises:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🏢 Enterprise Ready</h4>
+                    <p>Used by major corporations for internal and external API documentation with enterprise-grade security and compliance.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🚀 Developer Friendly</h4>
+                    <p>Loved by developers for its simplicity, flexibility, and comprehensive feature set that covers all documentation needs.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📈 Proven Scale</h4>
+                    <p>Successfully powers documentation for APIs with millions of daily requests and complex enterprise architectures.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔄 Active Development</h4>
+                    <p>Continuously updated with new features, performance improvements, and support for latest OpenAPI specifications.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Learn More</h2>
+
+            <div class="warning-box">
+                <strong>Want to implement Stoplight Elements in your own project?</strong>
+                <p>This AssetWorks M5 documentation serves as a perfect example of Elements in action. You can use this project as a template for your own API documentation needs.</p>
+            </div>
+
+            <a href="https://stoplight.io/open-source/elements" class="btn" target="_blank">Official Elements Documentation</a>
+            <a href="https://github.com/stoplightio/elements" class="btn" target="_blank">GitHub Repository</a>
+            <a href="technical.html" class="btn">Technical Implementation</a>
+            <a href="examples.html" class="btn">Usage Examples</a>
+
+            <div class="info-box">
+                <strong>Next Steps:</strong>
+                <ul>
+                    <li>Explore the <a href="technical.html">Technical Guide</a> to understand the implementation details</li>
+                    <li>Check out <a href="examples.html">Usage Examples</a> for practical integration scenarios</li>
+                    <li>Review <a href="files.html">File Documentation</a> to see how Elements integrates with other components</li>
+                    <li>Visit the <a href="overview.html">Project Overview</a> for the complete picture</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting Guide - AssetWorks M5 API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .section h3 { color: #667eea; margin: 25px 0 15px 0; }
+        .issue-card { background: #fff5f5; border-left: 4px solid #e53e3e; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .issue-card h4 { color: #e53e3e; margin-bottom: 10px; }
+        .solution-card { background: #f0fff4; border-left: 4px solid #38a169; padding: 20px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+        .solution-card h5 { color: #38a169; margin-bottom: 10px; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.9rem; }
+        .symptoms-box { background: #fef5e7; border: 1px solid #f6ad55; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .warning-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .info-box { background: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .tool-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; }
+        .tool-card h4 { color: #667eea; margin-bottom: 10px; }
+        .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 10px; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .tool-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🛠️ Troubleshooting Guide</h1>
+            <p>Solutions for common issues and debugging techniques</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="technical.html">Technical Guide</a>
+            <a href="examples.html">Usage Examples</a>
+        </div>
+
+        <div class="section">
+            <h2>🚨 Common Issues and Solutions</h2>
+
+            <div class="issue-card">
+                <h4>Server Startup Issues</h4>
+                
+                <h5>Issue: "Port 3000 is already in use"</h5>
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <div class="code-block">Error: listen EADDRINUSE: address already in use :::3000</div>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Find and kill the process using port 3000:</strong></p>
+                    <div class="code-block">
+# Windows
+netstat -ano | findstr :3000
+taskkill /PID &lt;process_id&gt; /F
+
+# Alternative: Use different port
+# Modify index.js to use different port
+const PORT = 3001;
+                    </div>
+                    
+                    <p><strong>2. Check for other applications:</strong></p>
+                    <ul>
+                        <li>Close other development servers</li>
+                        <li>Check for running Node.js processes</li>
+                        <li>Restart your computer if necessary</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <h4>Module Loading Issues</h4>
+                
+                <h5>Issue: "Cannot find module" errors</h5>
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <div class="code-block">
+Error: Cannot find module 'http'
+Error: Cannot find module 'fs'
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Verify Node.js installation:</strong></p>
+                    <div class="code-block">
+node --version
+npm --version
+                    </div>
+                    
+                    <p><strong>2. Reinstall Node.js if needed:</strong></p>
+                    <ul>
+                        <li>Download from <a href="https://nodejs.org" target="_blank">nodejs.org</a></li>
+                        <li>Choose LTS version for stability</li>
+                    </ul>
+                    
+                    <p><strong>3. Check file paths:</strong></p>
+                    <ul>
+                        <li>Ensure you're in the correct directory</li>
+                        <li>Verify all files are present</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <h4>File Loading Issues</h4>
+                
+                <h5>Issue: "404 - File not found" for static files</h5>
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>CSS styles not loading</li>
+                        <li>JavaScript files returning 404</li>
+                        <li>JSON files not accessible</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Verify file structure:</strong></p>
+                    <div class="code-block">
+project/
+├── index.html
+├── index.js
+├── 1.json
+├── 2.json
+├── css/styles.min.css
+├── js/web-components.min.js
+└── utils/textutils.js
+                    </div>
+                    
+                    <p><strong>2. Check file paths in index.html:</strong></p>
+                    <div class="code-block">
+&lt;!-- Ensure these paths match your file structure --&gt;
+&lt;script src="js/web-components.min.js"&gt;&lt;/script&gt;
+&lt;script src="utils/textutils.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="css/styles.min.css"&gt;
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <h4>JSON Processing Issues</h4>
+                
+                <h5>Issue: JSON files not loading or parsing errors</h5>
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <div class="code-block">
+SyntaxError: Unexpected token in JSON
+Failed to fetch 1.json
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Validate JSON syntax:</strong></p>
+                    <div class="code-block">
+# Use online JSON validator or
+node -e "console.log(JSON.parse(require('fs').readFileSync('1.json', 'utf8')))"
+                    </div>
+                    
+                    <p><strong>2. Check file encoding:</strong></p>
+                    <ul>
+                        <li>Ensure files are saved as UTF-8</li>
+                        <li>Remove any BOM (Byte Order Mark) characters</li>
+                    </ul>
+                    
+                    <p><strong>3. Verify file permissions:</strong></p>
+                    <ul>
+                        <li>Ensure files are readable</li>
+                        <li>Check file ownership and permissions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌐 Browser Compatibility Issues</h2>
+
+            <div class="issue-card">
+                <h4>Elements API Component Not Loading</h4>
+                
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>Blank page or missing documentation interface</li>
+                        <li>Console errors about custom elements</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Check browser compatibility:</strong></p>
+                    <ul>
+                        <li>Use modern browsers (Chrome 60+, Firefox 63+, Safari 10.1+)</li>
+                        <li>Enable JavaScript if disabled</li>
+                    </ul>
+                    
+                    <p><strong>2. Verify web components support:</strong></p>
+                    <div class="code-block">
+// Check in browser console
+if ('customElements' in window) {
+  console.log('Web Components supported');
+} else {
+  console.log('Web Components not supported');
+}
+                    </div>
+                    
+                    <p><strong>3. Load polyfills if needed:</strong></p>
+                    <div class="code-block">
+&lt;!-- Add before other scripts --&gt;
+&lt;script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-loader.js"&gt;&lt;/script&gt;
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <h4>CORS Errors When Testing API</h4>
+                
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <div class="code-block">Access to fetch at 'api/endpoint' from origin 'http://localhost:3000' has been blocked by CORS policy</div>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Add CORS headers to server:</strong></p>
+                    <div class="code-block">
+// In index.js
+res.writeHead(200, { 
+  'Content-Type': contentType,
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+});
+                    </div>
+                    
+                    <p><strong>2. Use browser flags for development:</strong></p>
+                    <div class="code-block">
+# Chrome with disabled security (development only)
+chrome.exe --user-data-dir=/tmp/chrome_dev_session --disable-web-security
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Performance Issues</h2>
+
+            <div class="issue-card">
+                <h4>Slow Page Loading</h4>
+                
+                <div class="symptoms-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>Long loading times</li>
+                        <li>Unresponsive interface</li>
+                        <li>High memory usage</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h5>Solutions:</h5>
+                    <p><strong>1. Optimize JSON file size:</strong></p>
+                    <div class="code-block">
+// Minify JSON files
+const minified = JSON.stringify(JSON.parse(jsonString));
+                    </div>
+                    
+                    <p><strong>2. Enable compression:</strong></p>
+                    <div class="code-block">
+// Add to index.js
+const zlib = require('zlib');
+
+// Compress responses
+if (req.headers['accept-encoding']?.includes('gzip')) {
+  res.writeHead(200, {
+    'Content-Type': contentType,
+    'Content-Encoding': 'gzip'
+  });
+  res.end(zlib.gzipSync(data));
+}
+                    </div>
+                    
+                    <p><strong>3. Implement caching:</strong></p>
+                    <div class="code-block">
+// Add cache headers
+const cacheTime = 3600; // 1 hour
+res.writeHead(200, {
+  'Content-Type': contentType,
+  'Cache-Control': `max-age=${cacheTime}`
+});
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Debugging Tools and Techniques</h2>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Browser Developer Tools</h4>
+                    <ul>
+                        <li><span class="highlight">Network Tab:</span> Monitor file loading and response codes</li>
+                        <li><span class="highlight">Console Tab:</span> View error messages and test JavaScript</li>
+                        <li><span class="highlight">Elements Tab:</span> Inspect DOM structure and CSS styles</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <h4>Node.js Debugging</h4>
+                    <div class="code-block">
+// Add debug logging to index.js
+const DEBUG = true;
+
+function debugLog(message) {
+  if (DEBUG) {
+    console.log(`[DEBUG] ${new Date().toISOString()}: ${message}`);
+  }
+}
+
+// Use throughout the code
+debugLog(`Serving file: ${filePath}`);
+debugLog(`Content type: ${contentType}`);
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h4>API Testing Tools</h4>
+                    <ul>
+                        <li><span class="highlight">Postman:</span> Test API endpoints directly</li>
+                        <li><span class="highlight">curl:</span> Command-line API testing</li>
+                        <li><span class="highlight">Browser fetch:</span> Quick testing in console</li>
+                    </ul>
+                    <div class="code-block">
+# Test with curl
+curl -X GET "http://localhost:3000/1.json" -H "accept: application/json"
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h4>Performance Monitoring</h4>
+                    <div class="code-block">
+// Add performance timing
+console.time('API Load');
+fetch('1.json')
+  .then(response => response.text())
+  .then(text => {
+    console.timeEnd('API Load');
+    return formatter(text);
+  });
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📞 Getting Help</h2>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>Documentation Resources</h4>
+                    <ul>
+                        <li><a href="https://swagger.io/specification/" target="_blank">OpenAPI Specification</a></li>
+                        <li>Elements API component library documentation</li>
+                        <li><a href="https://nodejs.org/docs/" target="_blank">Node.js Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <h4>Community Support</h4>
+                    <ul>
+                        <li><span class="highlight">Stack Overflow:</span> Tag questions with relevant technologies</li>
+                        <li><span class="highlight">GitHub Issues:</span> Check project repositories for known issues</li>
+                        <li><span class="highlight">Developer Forums:</span> AssetWorks developer community</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <h4>Professional Support</h4>
+                    <ul>
+                        <li><span class="highlight">AssetWorks Support:</span> Official technical support channels</li>
+                        <li><span class="highlight">System Integrators:</span> Professional integration services</li>
+                        <li><span class="highlight">Consulting Services:</span> Custom development assistance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Important Reminders:</strong>
+                <ul>
+                    <li>Always backup your project files before making significant changes</li>
+                    <li>Test solutions in a development environment before applying to production</li>
+                    <li>Keep detailed logs of issues and solutions for future reference</li>
+                    <li>Document any custom modifications for team members</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

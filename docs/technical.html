@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Guide - AssetWorks M5 API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 0; text-align: center; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
+        .nav a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .section h3 { color: #667eea; margin: 25px 0 15px 0; }
+        .code-block { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.9rem; }
+        .architecture-diagram { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; font-family: monospace; border: 1px solid #dee2e6; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .step-card { background: #f8f9ff; border-left: 4px solid #667eea; padding: 20px; border-radius: 0 8px 8px 0; }
+        .step-card h4 { color: #667eea; margin-bottom: 10px; }
+        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .config-item { background: #f8f9fa; padding: 15px; border-radius: 6px; }
+        .config-item h4 { color: #667eea; margin-bottom: 8px; }
+        .warning-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .info-box { background: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        .badge { background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 10px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .nav a { display: block; margin: 5px 0; }
+            .step-grid, .config-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🔧 Technical Implementation Guide</h1>
+            <p>Architecture, setup, and development details</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to Index</a>
+            <a href="overview.html">Project Overview</a>
+            <a href="files.html">File Documentation</a>
+            <a href="examples.html">Usage Examples</a>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Development Environment Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>Node.js</h4>
+                    <p>Version 14.0 or higher required</p>
+                </div>
+                <div class="config-item">
+                    <h4>Web Browser</h4>
+                    <p>Modern browser with JavaScript support</p>
+                </div>
+                <div class="config-item">
+                    <h4>Text Editor</h4>
+                    <p>VS Code, Sublime Text, or similar</p>
+                </div>
+                <div class="config-item">
+                    <h4>Git (Optional)</h4>
+                    <p>For version control</p>
+                </div>
+            </div>
+
+            <h3>Installation Steps</h3>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h4>1. Get Project Files</h4>
+                    <p>Clone or download the project files to your local machine.</p>
+                </div>
+                <div class="step-card">
+                    <h4>2. Navigate to Directory</h4>
+                    <p>Open terminal in the project folder.</p>
+                </div>
+                <div class="step-card">
+                    <h4>3. Start Server</h4>
+                    <p>Run <code>node index.js</code> to start the development server.</p>
+                </div>
+                <div class="step-card">
+                    <h4>4. Open Browser</h4>
+                    <p>Navigate to <code>http://localhost:3000</code></p>
+                </div>
+            </div>
+
+            <div class="code-block">
+# Quick setup commands
+cd "project-directory"
+node index.js
+
+# Expected output:
+# Server running at http://localhost:3000
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏗️ Architecture Overview</h2>
+
+            <h3>Client-Side Architecture</h3>
+            <div class="architecture-diagram">
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
+│   index.html    │───▶│  Elements API    │───▶│   API Data      │<br>
+│   (Entry Point) │    │  (Components)    │    │   (1.json)      │<br>
+└─────────────────┘    └──────────────────┘    └─────────────────┘<br>
+         │                       │                       │<br>
+         ▼                       ▼                       ▼<br>
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
+│   CSS Styles    │    │   Text Utils     │    │   Schemas       │<br>
+│   (Theming)     │    │   (Processing)   │    │   (2.json)      │<br>
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+            </div>
+
+            <h3>Server-Side Architecture</h3>
+            <div class="architecture-diagram">
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
+│   HTTP Request  │───▶│   index.js       │───▶│   File System   │<br>
+│   (Browser)     │    │   (Server)       │    │   (Static Files)│<br>
+└─────────────────┘    └──────────────────┘    └─────────────────┘<br>
+         ▲                       │                       │<br>
+         │                       ▼                       ▼<br>
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
+│   HTTP Response │◀───│   Content Type   │◀───│   File Content  │<br>
+│   (Static File) │    │   (Detection)    │    │   (Read)        │<br>
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Data Processing Pipeline</h2>
+
+            <h3>JSON Processing Flow</h3>
+            <div class="code-block">
+// 1. Raw API Specification (1.json)
+fetch('1.json')
+  .then(res => res.text())
+  
+// 2. Text Processing (textutils.js)
+  .then(text => formatter(text))
+  
+// 3. Deprecated Removal
+  .then(json => removeDeprecatedFromJsonString(json))
+  
+// 4. Nullable Updates
+  .then(json => updateNullableInJsonString(json))
+  
+// 5. Final Processed Data
+  .then(processedJson => {
+    docs.apiDescriptionDocument = processedJson;
+  });
+            </div>
+
+            <h3>Data Transformation Steps</h3>
+            
+            <div class="step-grid">
+                <div class="step-card">
+                    <h4><span class="badge">Step 1</span>Deprecated Content Removal</h4>
+                    <p>Recursively scans and removes objects with <code>deprecated: true</code> flags to ensure only current API features are displayed.</p>
+                </div>
+                <div class="step-card">
+                    <h4><span class="badge">Step 2</span>Nullable Field Updates</h4>
+                    <p>Updates nullable field specifications based on required field definitions and handles allOf schema merging.</p>
+                </div>
+                <div class="step-card">
+                    <h4><span class="badge">Step 3</span>Schema Validation</h4>
+                    <p>Ensures data validation rules are correctly applied and consistent across the specification.</p>
+                </div>
+                <div class="step-card">
+                    <h4><span class="badge">Step 4</span>Final Processing</h4>
+                    <p>Outputs clean, validated JSON ready for consumption by the Elements API components.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎨 Stoplight Elements Integration</h2>
+
+            <h3>What is Stoplight Elements?</h3>
+            <p><strong>Stoplight Elements</strong> is a powerful web component library created by Stoplight that transforms OpenAPI specifications into beautiful, interactive API documentation. It's the core technology that powers this documentation site.</p>
+
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>🌐 Web Components</h4>
+                    <p>Modern web standards-based components that work in any framework</p>
+                </div>
+                <div class="config-item">
+                    <h4>📖 OpenAPI Native</h4>
+                    <p>Built specifically for OpenAPI 3.0 specifications</p>
+                </div>
+                <div class="config-item">
+                    <h4>⚙️ Zero Config</h4>
+                    <p>Works out-of-the-box with any valid OpenAPI spec</p>
+                </div>
+                <div class="config-item">
+                    <h4>🎨 Customizable</h4>
+                    <p>Extensive theming and configuration options</p>
+                </div>
+            </div>
+
+            <h3>Elements API Configuration</h3>
+            <div class="code-block">
+&lt;elements-api 
+  id="docs" 
+  hideSchemas="true" 
+  router="hash" 
+  layout="sidebar" 
+  logo="https://media.glassdoor.com/sqls/385539/assetworks-squarelogo-1424782313334.png"&gt;
+&lt;/elements-api&gt;
+            </div>
+
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>hideSchemas</h4>
+                    <p>Simplifies interface by hiding complex schemas for cleaner presentation</p>
+                </div>
+                <div class="config-item">
+                    <h4>router="hash"</h4>
+                    <p>Enables deep linking with hash-based routing for bookmarkable URLs</p>
+                </div>
+                <div class="config-item">
+                    <h4>layout="sidebar"</h4>
+                    <p>Provides navigation sidebar for better user experience and organization</p>
+                </div>
+                <div class="config-item">
+                    <h4>logo</h4>
+                    <p>Displays custom branding and company logo in the documentation</p>
+                </div>
+            </div>
+
+            <h3>Dynamic Data Loading with Processing</h3>
+            <div class="code-block">
+// Load and process API specification
+(async () => {
+  const docs = document.getElementById('docs');
+  
+  // Fetch raw OpenAPI specification
+  const text = await fetch('1.json').then(res => res.text());
+  
+  // Process with custom utilities (remove deprecated, fix nullable)
+  const processedSpec = formatter(text);
+  
+  // Load into Stoplight Elements
+  docs.apiDescriptionDocument = processedSpec;
+})();
+            </div>
+
+            <h3>Why Stoplight Elements?</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>🏆 Industry Leader</h4>
+                    <p>Stoplight is a recognized leader in API design and documentation tools</p>
+                </div>
+                <div class="config-item">
+                    <h4>🚀 Performance</h4>
+                    <p>Optimized for large API specifications with thousands of endpoints</p>
+                </div>
+                <div class="config-item">
+                    <h4>📱 Responsive</h4>
+                    <p>Mobile-first design that works perfectly on all devices</p>
+                </div>
+                <div class="config-item">
+                    <h4>🔍 Interactive</h4>
+                    <p>Built-in "Try It" functionality for testing API endpoints directly</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🖥️ Server Implementation</h2>
+
+            <h3>HTTP Server Setup</h3>
+            <div class="code-block">
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
+
+const PORT = 3000;
+
+const server = http.createServer((req, res) => {
+  const parsedUrl = url.parse(req.url);
+  let pathname = parsedUrl.pathname;
+
+  // Default to index.html
+  if (pathname === '/') {
+    pathname = '/index.html';
+  }
+
+  const filePath = path.join(__dirname, pathname);
+  const ext = path.extname(filePath).toLowerCase();
+
+  // Content type mapping
+  const contentType = {
+    '.html': 'text/html',
+    '.json': 'application/json',
+    '.css': 'text/css',
+    '.js': 'application/javascript'
+  }[ext] || 'application/octet-stream';
+
+  // File serving with error handling
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(404);
+      res.end('File not found');
+    } else {
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(data);
+    }
+  });
+});
+            </div>
+
+            <h3>Content Type Detection</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>HTML Files</h4>
+                    <p><code>text/html</code> for web pages</p>
+                </div>
+                <div class="config-item">
+                    <h4>JSON Files</h4>
+                    <p><code>application/json</code> for API specs</p>
+                </div>
+                <div class="config-item">
+                    <h4>CSS Files</h4>
+                    <p><code>text/css</code> for stylesheets</p>
+                </div>
+                <div class="config-item">
+                    <h4>JavaScript Files</h4>
+                    <p><code>application/javascript</code> for scripts</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Performance Optimization</h2>
+
+            <h3>File Size Optimization</h3>
+            <ul>
+                <li><span class="highlight">Minified CSS:</span> Compressed stylesheets for faster loading</li>
+                <li><span class="highlight">Minified JavaScript:</span> Compressed component libraries</li>
+                <li><span class="highlight">JSON Compression:</span> Efficient API specification storage</li>
+                <li><span class="highlight">Gzip Support:</span> Server-level compression (can be added)</li>
+            </ul>
+
+            <h3>Caching Strategy</h3>
+            <div class="code-block">
+// Browser caching headers (enhancement)
+const cacheHeaders = {
+  '.css': 'max-age=86400',    // 24 hours
+  '.js': 'max-age=86400',     // 24 hours
+  '.json': 'max-age=3600',    // 1 hour
+  '.html': 'no-cache'         // Always fresh
+};
+            </div>
+
+            <h3>Memory Management</h3>
+            <ul>
+                <li>Lazy loading of components as needed</li>
+                <li>Efficient JSON parsing with streaming</li>
+                <li>Minimal DOM manipulation</li>
+                <li>Proper event listener cleanup</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔒 Security Considerations</h2>
+
+            <h3>Client-Side Security</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <h4>XSS Prevention</h4>
+                    <p>Proper data sanitization and validation</p>
+                </div>
+                <div class="config-item">
+                    <h4>Content Security Policy</h4>
+                    <p>Restrict resource loading sources</p>
+                </div>
+                <div class="config-item">
+                    <h4>Input Validation</h4>
+                    <p>Validate all user inputs</p>
+                </div>
+                <div class="config-item">
+                    <h4>HTTPS Only</h4>
+                    <p>Secure connections in production</p>
+                </div>
+            </div>
+
+            <h3>Server-Side Security</h3>
+            <div class="code-block">
+// Path traversal prevention
+const safePath = path.normalize(filePath);
+if (!safePath.startsWith(__dirname)) {
+  res.writeHead(403);
+  res.end('Forbidden');
+  return;
+}
+
+// File type restrictions
+const allowedExtensions = ['.html', '.css', '.js', '.json'];
+if (!allowedExtensions.includes(ext)) {
+  res.writeHead(403);
+  res.end('File type not allowed');
+  return;
+}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Deployment Considerations</h2>
+
+            <h3>Production Deployment</h3>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h4>1. Static Hosting</h4>
+                    <p>Deploy to CDN or static hosting service for better performance and scalability.</p>
+                </div>
+                <div class="step-card">
+                    <h4>2. HTTPS Setup</h4>
+                    <p>Ensure secure connections with SSL/TLS certificates.</p>
+                </div>
+                <div class="step-card">
+                    <h4>3. Compression</h4>
+                    <p>Enable gzip compression for faster loading times.</p>
+                </div>
+                <div class="step-card">
+                    <h4>4. Monitoring</h4>
+                    <p>Add performance monitoring and error tracking.</p>
+                </div>
+            </div>
+
+            <h3>Environment Configuration</h3>
+            <div class="code-block">
+// Environment-specific settings
+const config = {
+  development: {
+    port: 3000,
+    host: 'localhost',
+    debug: true
+  },
+  production: {
+    port: process.env.PORT || 80,
+    host: '0.0.0.0',
+    debug: false
+  }
+};
+            </div>
+
+            <div class="info-box">
+                <strong>Production Checklist:</strong>
+                <ul>
+                    <li>Enable HTTPS and security headers</li>
+                    <li>Configure proper caching policies</li>
+                    <li>Set up monitoring and logging</li>
+                    <li>Implement backup strategies</li>
+                    <li>Test performance under load</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
